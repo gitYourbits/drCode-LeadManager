@@ -4,7 +4,7 @@
 
 The Lead Management System is an advanced web application designed to collect, score, and prioritize potential customer leads. Built for a property sales hackathon, this system demonstrates how companies can efficiently manage their sales pipeline by focusing on the most promising prospects.
 
-![Lead Management System](https://via.placeholder.com/800x400?text=Lead+Management+System)
+![Lead Management System](assets/Dr.Hackathon.jpeg)
 
 ## Key Features
 
@@ -40,8 +40,8 @@ The Lead Management System is an advanced web application designed to collect, s
 
 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/lead-management-system.git
-cd lead-management-system
+git clone https://github.com/gitYourbits/drCode-LeadManager.git
+cd drCode-LeadManager
 ```
 
 2. Install backend dependencies
@@ -56,13 +56,21 @@ cp .env.example .env
 # Edit the .env file with your MongoDB connection string and other settings
 ```
 
-4. Install frontend dependencies
+4. Generate Prisma client
+```bash
+npx prisma generate
+# This creates the Prisma client code required by the application
+# If you get any schema errors, you may need to run:
+npx prisma db push
+```
+
+5. Install frontend dependencies
 ```bash
 cd ../frontend
 npm install
 ```
 
-5. Start the application
+6. Start the application
 ```bash
 # In the backend directory
 npm run dev
@@ -71,11 +79,41 @@ npm run dev
 npm run dev
 ```
 
-6. Access the application
+7. Access the application
 ```
 Frontend: http://localhost:5173
 Backend API: http://localhost:3000
 ```
+
+### Troubleshooting Common Issues
+
+#### Prisma Client Not Found
+If you see errors like "Cannot find module '@prisma/client'" or "You need to run prisma generate":
+```bash
+cd backend
+npx prisma generate
+```
+
+#### Database Connection Issues
+If you experience database connection problems:
+1. Check that your MongoDB instance is running
+2. Verify the connection string in the `.env` file
+3. Try running:
+```bash
+npx prisma db push
+```
+
+#### Port Already in Use
+If you see "Port already in use" errors:
+1. Find the process using the port:
+```bash
+# Windows
+netstat -ano | findstr :[PORT]
+# Then kill the process:
+taskkill /PID [PID] /F
+```
+
+2. Or change the port in the configuration (check package.json or server.js files)
 
 ## Usage
 
@@ -177,7 +215,3 @@ When presenting this project at a hackathon:
 ## License
 
 [MIT License](LICENSE)
-
-## Contributors
-
-- Your Name [@yourgithub](https://github.com/yourgithub)
