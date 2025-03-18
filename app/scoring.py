@@ -1,6 +1,13 @@
 def calculate_lead_score(data):
-    """Calculate lead score based on weighted sum approach"""
-    
+    """Calculate lead score based on normalized values and weighted sum approach"""
+
+    # Expected Ranges for Normalization
+    max_values = {
+        "final_profit": 1000000.0,  # Assuming 1M as the max profit cap
+        "urgency": 5,  # 1 to 5 scale
+        "intent": 5,  # 1 to 5 scale
+    }
+
     # Predefined Weights
     weights = {
         "final_profit": 0.30,
@@ -9,19 +16,21 @@ def calculate_lead_score(data):
         "interest_level": 0.15,
         "customer_type": 0.10
     }
-    
-    # Normalize customer_type (New = 1 → 0, Returning = 2 → 1)
-    normalized_customer_type = data.customer_type - 1
-    
+
+    # Normalize only numerical fields
+    normalized_values = {
+        "final_profit": data.final_profit / max_values["final_profit"],
+        "urgency": data.urgency / max_values["urgency"],
+        "intent": data.intent / max_values["intent"],
+    }
+
+    # Convert customer_type & interest_level to binary (New = 0, Returning = 1)
+    normalized_values["customer_type"] = 0 if data.customer_type == 1 else 1
+    normalized_values["interest_level"] = 0 if data.interest_level <= 2 else 1  # Interest level 1-2 as 'No', 3-5 as 'Yes'
+
     # Compute weighted sum
-    lead_score = (
-        (data.final_profit * weights["final_profit"]) +
-        (data.urgency * 20 * weights["urgency"]) +
-        (data.intent * 20 * weights["intent"]) +
-        (data.interest_level * 20 * weights["interest_level"]) +
-        (normalized_customer_type * 100 * weights["customer_type"])
-    )
-    
+    lead_score = sum(normalized_values[key] * weights[key] for key in weights) * 100
+
     # Classification into 5 categories
     if lead_score <= 20:
         category = 1
