@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { getAPI } = require('../controllers/aiFetch'); // Correct import
 
-router.post('/api-endpoint', getAPI);
+router.post('/api', getAPI);
 
 router.get('/about', (req, res) => {
   res.send('About page');

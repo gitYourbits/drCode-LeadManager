@@ -1,15 +1,20 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+const express = require("express");
+const cors = require("cors");
 
 const app = express();
+const PORT = 3000;
 
-// Instead of app.use(bodyParser());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true })); // Provide extended option explicitly
+const router = require("./routes/apiRouter");
 
-const apiRouter = require('./routes/apiRouter'); // Assuming your router file is here
-app.use('/api', apiRouter);
+// ✅ Allow requests from frontend (localhost:5173)
+app.use(cors({
+  origin: "http://localhost:5173",
+  methods: "GET,POST,PUT,DELETE",
+  allowedHeaders: "Content-Type,Authorization"
+}));
 
-app.listen(3000, () => {
-  console.log('Server is running on http://localhost:3000');
-});
+app.use(express.json());
+
+app.use("/leads", router);
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
