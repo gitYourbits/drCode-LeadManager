@@ -5,12 +5,15 @@ import 'react-toastify/dist/ReactToastify.css';
 import './index.css';
 import App from './App.jsx';
 
+// Custom styles for toast notifications
+import './toast-custom.css';
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
     <ToastContainer 
-      position="top-right"
-      autoClose={3000}
+      position="bottom-right"
+      autoClose={4000}
       hideProgressBar={false}
       newestOnTop
       closeOnClick
@@ -18,7 +21,11 @@ createRoot(document.getElementById('root')).render(
       pauseOnFocusLoss
       draggable
       pauseOnHover
-      theme="light"
+      theme="dark"
+      className="custom-toast-container"
+      toastClassName="custom-toast"
+      bodyClassName="custom-toast-body"
+      progressClassName="custom-toast-progress"
     />
   </StrictMode>,
 );

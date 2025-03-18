@@ -176,6 +176,50 @@ The system leverages several advanced algorithms to achieve accurate prioritizat
    - Hierarchical comparison of individual factors
    - Deterministic random component for identical inputs
 
+### Data Flow Through Scoring System
+
+```
+┌─────────────────┐                        
+│   Input Data    │  Budget, urgency, property interest, etc.
+└────────┬────────┘                        
+         │                                
+         ▼                                
+┌─────────────────┐  Low Budget: μ=0.0     
+│  Fuzzification  │  Medium Budget: μ=0.6  
+│                 │  High Budget: μ=0.2     
+└────────┬────────┘                        
+         │                                
+         ▼                                
+┌─────────────────┐  Profit: 40%           
+│  AHP Weighting  │  Urgency: 25%          
+│                 │  Intent: 15%           
+└────────┬────────┘  Interest: 10%          
+         │         Customer Type: 5%        
+         ▼         Sentiment: 5%           
+┌─────────────────┐                        
+│  Weighted Sum   │  WSM = ∑(Weight_i × Score_i)
+│     Model       │  Example: 0.4×4 + 0.25×5 + 0.15×3 + ...
+└────────┬────────┘  Raw Score = 3.95     
+         │                                
+         ▼                                
+┌─────────────────┐                        
+│   Contextual    │  Location Adjustment: +0.5 for Mumbai
+│   Adjustment    │  Season Adjustment: +0.5 (Festival season)
+└────────┬────────┘  Adjusted Score = 4.95
+         │                                
+         ▼                                
+┌─────────────────┐                        
+│  Tie-Breaking   │  If scores are identical, use hierarchical
+│                 │  comparison of individual factors
+└────────┬────────┘                        
+         │                                
+         ▼                                
+┌─────────────────┐                        
+│  Final Priority │  Final Result: Priority Level 5
+│     Score       │  Action: Immediate follow-up within 1 hour
+└─────────────────┘                        
+```
+
 For detailed documentation on the scoring algorithm, see [SCORING_DOCUMENTATION.md](./SCORING_DOCUMENTATION.md).
 
 ## Project Structure
@@ -198,20 +242,9 @@ lead-management-system/
 └── README.md             # Project documentation
 ```
 
-## Hackathon Presentation Tips
-
-When presenting this project at a hackathon:
-
-1. **Highlight the Scoring Algorithm**: Explain how the system uses fuzzy logic and multi-criteria decision making for lead prioritization.
-
-2. **Demonstrate Real-world Impact**: Show how the system could save sales teams time by focusing on high-value prospects.
-
-3. **Show the Visualization Components**: Demonstrate how the system makes complex data easily understandable through visual representations.
-
-4. **Emphasize Customizability**: Mention how the scoring system can be adjusted based on different business needs and markets.
-
-5. **Discuss Future Enhancements**: Share ideas for integrating machine learning to further refine the scoring algorithm based on conversion data.
 
 ## License
 
 [MIT License](LICENSE)
+
+```This Project is Developed for  DrCode Hackathon```

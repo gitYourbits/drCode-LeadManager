@@ -43,17 +43,17 @@ const LeadScoreVisualization = ({ lead }) => {
     return (
       <div className="mb-3">
         <div className="flex justify-between mb-1">
-          <span className="text-sm font-medium text-slate-700">{label}</span>
-          <span className="text-sm font-medium text-slate-700">{isNaN(numValue) ? 'N/A' : numValue}/{maxValue}</span>
+          <span className="text-sm font-medium text-white">{label}</span>
+          <span className="text-sm font-medium text-white">{isNaN(numValue) ? 'N/A' : numValue}/{maxValue}</span>
         </div>
         <motion.div 
-          className="w-full bg-slate-200 rounded-full h-2.5 overflow-hidden"
+          className="w-full bg-gray-700 rounded-full h-2.5 overflow-hidden"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
           <motion.div 
-            className="bg-indigo-600 h-2.5 rounded-full" 
+            className="bg-indigo-500 h-2.5 rounded-full" 
             initial={{ width: 0 }}
             animate={{ width: `${percentage}%` }}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -66,8 +66,8 @@ const LeadScoreVisualization = ({ lead }) => {
   // If lead is null, show loading state
   if (!lead) {
     return (
-      <div className="bg-white p-6 rounded-lg shadow-lg w-full h-full flex items-center justify-center">
-        <p className="text-slate-500 text-center text-lg">Select a lead to view detailed analysis</p>
+      <div className="bg-gray-800 p-6 rounded-lg shadow-lg w-full h-full flex items-center justify-center">
+        <p className="text-indigo-300 text-center text-lg">Select a lead to view detailed analysis</p>
       </div>
     );
   }
@@ -77,12 +77,12 @@ const LeadScoreVisualization = ({ lead }) => {
 
   return (
     <motion.div 
-      className="bg-white p-6 rounded-lg shadow-lg w-full"
+      className="bg-gray-800 p-6 rounded-lg shadow-lg w-full"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <h2 className="text-2xl font-semibold mb-4 text-slate-700">Lead Score Analysis</h2>
+      <h2 className="text-2xl font-bold mb-4 text-white">Lead Score Analysis</h2>
       
       <div>
         {/* Score Badge */}
@@ -100,15 +100,15 @@ const LeadScoreVisualization = ({ lead }) => {
             {lead.lead_score || '?'}
           </motion.div>
           <div className="ml-4">
-            <h3 className="text-xl font-semibold text-slate-800">{getScoreLabel(lead.lead_score)}</h3>
-            <p className="text-slate-500">Lead ID: {leadId}</p>
+            <h3 className="text-xl font-semibold text-white">{getScoreLabel(lead.lead_score)}</h3>
+            <p className="text-indigo-300">Lead ID: {leadId}</p>
           </div>
         </div>
         
         {/* Progress Bar */}
         <div className="mb-6">
           <motion.div 
-            className="w-full bg-slate-200 rounded-full h-4 overflow-hidden"
+            className="w-full bg-gray-700 rounded-full h-4 overflow-hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
@@ -125,27 +125,27 @@ const LeadScoreVisualization = ({ lead }) => {
         {/* Lead Details */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <motion.div 
-            className="bg-slate-50 p-4 rounded-lg shadow hover:shadow-md transition-shadow"
+            className="bg-gray-900 p-4 rounded-lg shadow hover:shadow-md transition-shadow"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h4 className="font-semibold text-lg mb-3 text-indigo-600">Basic Information</h4>
-            <p className="text-slate-700"><span className="font-medium">Name:</span> {formatValue(lead.name)}</p>
-            <p className="text-slate-700"><span className="font-medium">Contact:</span> {formatValue(lead.phone)}</p>
-            <p className="text-slate-700"><span className="font-medium">Email:</span> {formatValue(lead.email)}</p>
-            <p className="text-slate-700"><span className="font-medium">Property Type:</span> {formatValue(lead.propertyType)}</p>
-            <p className="text-slate-700"><span className="font-medium">Budget:</span> {formatValue(lead.budget, '₹')}</p>
-            <p className="text-slate-700"><span className="font-medium">Location:</span> {formatValue(lead.location)}</p>
+            <h4 className="font-semibold text-lg mb-3 text-indigo-300">Basic Information</h4>
+            <p className="text-indigo-300"><span className="font-medium text-white">Name:</span> {formatValue(lead.name)}</p>
+            <p className="text-indigo-300"><span className="font-medium text-white">Contact:</span> {formatValue(lead.phone)}</p>
+            <p className="text-indigo-300"><span className="font-medium text-white">Email:</span> {formatValue(lead.email)}</p>
+            <p className="text-indigo-300"><span className="font-medium text-white">Property Type:</span> {formatValue(lead.propertyType)}</p>
+            <p className="text-indigo-300"><span className="font-medium text-white">Budget:</span> {formatValue(lead.budget, '₹')}</p>
+            <p className="text-indigo-300"><span className="font-medium text-white">Location:</span> {formatValue(lead.location)}</p>
           </motion.div>
           
           <motion.div 
-            className="bg-slate-50 p-4 rounded-lg shadow hover:shadow-md transition-shadow"
+            className="bg-gray-900 p-4 rounded-lg shadow hover:shadow-md transition-shadow"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <h4 className="font-semibold text-lg mb-3 text-indigo-600">Scoring Factors</h4>
+            <h4 className="font-semibold text-lg mb-3 text-indigo-300">Scoring Factors</h4>
             <FactorBar label="Profit Potential" value={lead.category ? Math.min(5, Math.max(1, Math.round(lead.category / 50000))) : 3} />
             <FactorBar label="Urgency" value={lead.urgency} />
             <FactorBar label="Intent" value={lead.specificProperty === "Yes" ? 4 : 2} />
@@ -160,17 +160,17 @@ const LeadScoreVisualization = ({ lead }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          <div className="bg-slate-50 p-4 rounded-lg shadow hover:shadow-md transition-shadow">
-            <h4 className="font-semibold text-lg mb-3 text-indigo-600">Intent Analysis</h4>
-            <p className="text-slate-700"><span className="font-medium">Purchase Timeframe:</span> {formatValue(lead.intentQuestions?.timeframe || '3-6 months')}</p>
-            <p className="text-slate-700"><span className="font-medium">Financing Status:</span> {formatValue(lead.intentQuestions?.financing || 'Not Started')}</p>
-            <p className="text-slate-700"><span className="font-medium">Properties Viewed:</span> {formatValue(lead.intentQuestions?.viewedProperties || '0-5')}</p>
+          <div className="bg-gray-900 p-4 rounded-lg shadow hover:shadow-md transition-shadow">
+            <h4 className="font-semibold text-lg mb-3 text-indigo-300">Intent Analysis</h4>
+            <p className="text-indigo-300"><span className="font-medium text-white">Purchase Timeframe:</span> {formatValue(lead.intentQuestions?.timeframe || '3-6 months')}</p>
+            <p className="text-indigo-300"><span className="font-medium text-white">Financing Status:</span> {formatValue(lead.intentQuestions?.financing || 'Not Started')}</p>
+            <p className="text-indigo-300"><span className="font-medium text-white">Properties Viewed:</span> {formatValue(lead.intentQuestions?.viewedProperties || '0-5')}</p>
           </div>
           
-          <div className="bg-slate-50 p-4 rounded-lg shadow hover:shadow-md transition-shadow">
-            <h4 className="font-semibold text-lg mb-3 text-indigo-600">Sentiment Analysis</h4>
-            <p className="text-slate-700"><span className="font-medium">Primary Motivation:</span> {formatValue(lead.sentimentQuestions?.motivationFactor || 'balanced')}</p>
-            <p className="text-slate-700"><span className="font-medium">Decision Style:</span> {formatValue(lead.sentimentQuestions?.decisionStyle || 'balanced')}</p>
+          <div className="bg-gray-900 p-4 rounded-lg shadow hover:shadow-md transition-shadow">
+            <h4 className="font-semibold text-lg mb-3 text-indigo-300">Sentiment Analysis</h4>
+            <p className="text-indigo-300"><span className="font-medium text-white">Primary Motivation:</span> {formatValue(lead.sentimentQuestions?.motivationFactor || 'balanced')}</p>
+            <p className="text-indigo-300"><span className="font-medium text-white">Decision Style:</span> {formatValue(lead.sentimentQuestions?.decisionStyle || 'balanced')}</p>
           </div>
         </motion.div>
         
@@ -181,16 +181,16 @@ const LeadScoreVisualization = ({ lead }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
         >
-          <div className="bg-slate-50 p-4 rounded-lg shadow hover:shadow-md transition-shadow">
-            <h4 className="font-semibold text-lg mb-3 text-indigo-600">Business Rules Applied</h4>
+          <div className="bg-gray-900 p-4 rounded-lg shadow hover:shadow-md transition-shadow">
+            <h4 className="font-semibold text-lg mb-3 text-indigo-300">Business Rules Applied</h4>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <p className="text-slate-700"><span className="font-medium">Location Priority:</span> {['Delhi', 'Mumbai', 'Bangalore', 'Karnatka', 'Hyderabad'].includes(lead.location) ? 'High' : 'Standard'}</p>
-                <p className="text-slate-700"><span className="font-medium">Price Range:</span> {lead.budget > 100000 ? 'Premium' : lead.budget > 50000 ? 'Mid-range' : 'Budget'}</p>
+                <p className="text-indigo-300"><span className="font-medium text-white">Location Priority:</span> {['Delhi', 'Mumbai', 'Bangalore', 'Karnatka', 'Hyderabad'].includes(lead.location) ? 'High' : 'Standard'}</p>
+                <p className="text-indigo-300"><span className="font-medium text-white">Price Range:</span> {lead.budget > 100000 ? 'Premium' : lead.budget > 50000 ? 'Mid-range' : 'Budget'}</p>
               </div>
               <div>
-                <p className="text-slate-700"><span className="font-medium">Customer Type:</span> {lead.specificProperty === 'Yes' ? 'Targeted' : 'General'}</p>
-                <p className="text-slate-700"><span className="font-medium">VIP Status:</span> {lead.budget > 200000 || lead.urgency > 4 ? 'Yes' : 'No'}</p>
+                <p className="text-indigo-300"><span className="font-medium text-white">Customer Type:</span> {lead.specificProperty === 'Yes' ? 'Targeted' : 'General'}</p>
+                <p className="text-indigo-300"><span className="font-medium text-white">VIP Status:</span> {lead.budget > 200000 || lead.urgency > 4 ? 'Yes' : 'No'}</p>
               </div>
             </div>
           </div>

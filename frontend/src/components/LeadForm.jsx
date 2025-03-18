@@ -101,12 +101,12 @@ const LeadForm = ({ onLeadSubmit }) => {
 
   return (
     <motion.div 
-      className="bg-white p-6 rounded-lg shadow-lg max-w-4xl mx-auto"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
+      className="bg-gray-900 p-6 rounded-lg shadow-lg max-w-4xl mx-auto"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3 }}
     >
-      <h2 className="text-2xl font-semibold mb-4 text-slate-700">Submit New Lead</h2>
+      <h2 className="text-2xl font-bold mb-6 text-white">Submit New Lead</h2>
       
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -118,7 +118,7 @@ const LeadForm = ({ onLeadSubmit }) => {
             transition={{ duration: 0.5, delay: 0.1 }}
           >
             <div>
-              <label className="block text-slate-700 font-medium mb-2" htmlFor="name">
+              <label className="block text-gray-300 font-medium mb-2" htmlFor="name">
                 Full Name
               </label>
               <input
@@ -128,13 +128,13 @@ const LeadForm = ({ onLeadSubmit }) => {
                 value={formData.name}
                 onChange={handleInputChange}
                 required
-                className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-slate-800"
+                className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-white"
                 placeholder="John Doe"
               />
             </div>
 
             <div>
-              <label className="block text-slate-700 font-medium mb-2" htmlFor="email">
+              <label className="block text-gray-300 font-medium mb-2" htmlFor="email">
                 Email Address
               </label>
               <input
@@ -144,13 +144,13 @@ const LeadForm = ({ onLeadSubmit }) => {
                 value={formData.email}
                 onChange={handleInputChange}
                 required
-                className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-slate-800"
+                className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-white"
                 placeholder="john@example.com"
               />
             </div>
 
             <div>
-              <label className="block text-slate-700 font-medium mb-2" htmlFor="phone">
+              <label className="block text-gray-300 font-medium mb-2" htmlFor="phone">
                 Phone Number
               </label>
               <input
@@ -160,7 +160,7 @@ const LeadForm = ({ onLeadSubmit }) => {
                 value={formData.phone}
                 onChange={handleInputChange}
                 required
-                className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-slate-800"
+                className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-white"
                 placeholder="+91 1234567890"
               />
             </div>
@@ -174,7 +174,7 @@ const LeadForm = ({ onLeadSubmit }) => {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <div>
-              <label className="block text-slate-700 font-medium mb-2" htmlFor="budget">
+              <label className="block text-gray-300 font-medium mb-2" htmlFor="budget">
                 Budget (in ₹)
               </label>
               <input
@@ -184,14 +184,14 @@ const LeadForm = ({ onLeadSubmit }) => {
                 value={formData.budget}
                 onChange={handleInputChange}
                 required
-                className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-slate-800"
+                className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-white"
                 placeholder="50000"
                 min="1000"
               />
             </div>
 
             <div>
-              <label className="block text-slate-700 font-medium mb-2" htmlFor="propertyType">
+              <label className="block text-gray-300 font-medium mb-2" htmlFor="propertyType">
                 Property Type
               </label>
               <select
@@ -200,7 +200,7 @@ const LeadForm = ({ onLeadSubmit }) => {
                 value={formData.propertyType}
                 onChange={handleInputChange}
                 required
-                className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-slate-800 bg-white"
+                className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-white"
               >
                 <option value="Apartment">Apartment</option>
                 <option value="Villa">Villa</option>
@@ -211,7 +211,7 @@ const LeadForm = ({ onLeadSubmit }) => {
             </div>
             
             <div>
-              <label className="block text-slate-700 font-medium mb-2" htmlFor="location">
+              <label className="block text-gray-300 font-medium mb-2" htmlFor="location">
                 Preferred Location
               </label>
               <input
@@ -221,7 +221,7 @@ const LeadForm = ({ onLeadSubmit }) => {
                 value={formData.location}
                 onChange={handleInputChange}
                 required
-                className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-slate-800"
+                className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-white"
                 placeholder="Delhi"
               />
             </div>
@@ -236,7 +236,7 @@ const LeadForm = ({ onLeadSubmit }) => {
           transition={{ duration: 0.5, delay: 0.3 }}
         >
           <div>
-            <label className="block text-slate-700 font-medium mb-2" htmlFor="urgency">
+            <label className="block text-gray-300 font-medium mb-2" htmlFor="urgency">
               How urgently are you looking to buy?
             </label>
             <select
@@ -245,7 +245,7 @@ const LeadForm = ({ onLeadSubmit }) => {
               value={formData.urgency}
               onChange={handleInputChange}
               required
-              className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-slate-800 bg-white"
+              className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-white"
             >
               <option value="1">Just Browsing</option>
               <option value="2">Within a Year</option>
@@ -256,7 +256,7 @@ const LeadForm = ({ onLeadSubmit }) => {
           </div>
           
           <div>
-            <label className="block text-slate-700 font-medium mb-2" htmlFor="specificProperty">
+            <label className="block text-gray-300 font-medium mb-2" htmlFor="specificProperty">
               Interested in a specific property?
             </label>
             <select
@@ -265,7 +265,7 @@ const LeadForm = ({ onLeadSubmit }) => {
               value={formData.specificProperty}
               onChange={handleInputChange}
               required
-              className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-slate-800 bg-white"
+              className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-white"
             >
               <option value="No">No specific property in mind</option>
               <option value="Yes">Yes, I have a specific property</option>
@@ -283,7 +283,7 @@ const LeadForm = ({ onLeadSubmit }) => {
           <button
             type="button"
             onClick={toggleOptionalQuestions}
-            className="text-indigo-600 hover:text-indigo-800 font-medium flex items-center transition-colors"
+            className="text-indigo-400 hover:text-indigo-300 font-medium flex items-center transition-colors"
           >
             <svg 
               className={`w-5 h-5 mr-2 transform transition-transform ${formData.showOptionalQuestions ? 'rotate-90' : ''}`} 
@@ -309,21 +309,21 @@ const LeadForm = ({ onLeadSubmit }) => {
               className="overflow-hidden"
             >
               <div className="pt-4 space-y-6">
-                <h3 className="text-lg font-medium text-slate-700 border-b border-slate-200 pb-2">Optional Questions</h3>
+                <h3 className="text-lg font-medium text-gray-300 border-b border-gray-200 pb-2">Optional Questions</h3>
                 
                 {/* Intent Questions */}
                 <div className="space-y-4">
-                  <h4 className="font-medium text-slate-700">Purchase Timeline</h4>
+                  <h4 className="font-medium text-gray-300">Purchase Timeline</h4>
                   
                   <div>
-                    <label className="block text-slate-600 mb-2" htmlFor="timeframe">
+                    <label className="block text-gray-400 mb-2" htmlFor="timeframe">
                       What is your expected timeframe for making a purchase?
                     </label>
                     <select
                       id="timeframe"
                       value={formData.intentQuestions.timeframe}
                       onChange={(e) => handleNestedInputChange("intentQuestions", "timeframe", e.target.value)}
-                      className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-slate-800 bg-white"
+                      className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-white"
                     >
                       <option value="Immediate">Immediate (within 1 month)</option>
                       <option value="1-3 months">1-3 months</option>
@@ -334,14 +334,14 @@ const LeadForm = ({ onLeadSubmit }) => {
                   </div>
                   
                   <div>
-                    <label className="block text-slate-600 mb-2" htmlFor="financing">
+                    <label className="block text-gray-400 mb-2" htmlFor="financing">
                       What is your current financing status?
                     </label>
                     <select
                       id="financing"
                       value={formData.intentQuestions.financing}
                       onChange={(e) => handleNestedInputChange("intentQuestions", "financing", e.target.value)}
-                      className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-slate-800 bg-white"
+                      className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-white"
                     >
                       <option value="Not Started">Not Started</option>
                       <option value="Not Sure">Not Sure</option>
@@ -352,14 +352,14 @@ const LeadForm = ({ onLeadSubmit }) => {
                   </div>
                   
                   <div>
-                    <label className="block text-slate-600 mb-2" htmlFor="viewedProperties">
+                    <label className="block text-gray-400 mb-2" htmlFor="viewedProperties">
                       How many properties have you viewed so far?
                     </label>
                     <select
                       id="viewedProperties"
                       value={formData.intentQuestions.viewedProperties}
                       onChange={(e) => handleNestedInputChange("intentQuestions", "viewedProperties", e.target.value)}
-                      className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-slate-800 bg-white"
+                      className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-white"
                     >
                       <option value="0-5">0-5 properties</option>
                       <option value="6-10">6-10 properties</option>
@@ -371,17 +371,17 @@ const LeadForm = ({ onLeadSubmit }) => {
                 
                 {/* Sentiment Questions */}
                 <div className="space-y-4">
-                  <h4 className="font-medium text-slate-700">Your Decision Style</h4>
+                  <h4 className="font-medium text-gray-300">Your Decision Style</h4>
                   
                   <div>
-                    <label className="block text-slate-600 mb-2" htmlFor="motivationFactor">
+                    <label className="block text-gray-400 mb-2" htmlFor="motivationFactor">
                       What factor motivates your property purchase most?
                     </label>
                     <select
                       id="motivationFactor"
                       value={formData.sentimentQuestions.motivationFactor}
                       onChange={(e) => handleNestedInputChange("sentimentQuestions", "motivationFactor", e.target.value)}
-                      className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-slate-800 bg-white"
+                      className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-white"
                     >
                       <option value="practical">Practical/Investment Value</option>
                       <option value="balanced">Balanced Approach</option>
@@ -390,14 +390,14 @@ const LeadForm = ({ onLeadSubmit }) => {
                   </div>
                   
                   <div>
-                    <label className="block text-slate-600 mb-2" htmlFor="decisionStyle">
+                    <label className="block text-gray-400 mb-2" htmlFor="decisionStyle">
                       How would you describe your decision-making style?
                     </label>
                     <select
                       id="decisionStyle"
                       value={formData.sentimentQuestions.decisionStyle}
                       onChange={(e) => handleNestedInputChange("sentimentQuestions", "decisionStyle", e.target.value)}
-                      className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-slate-800 bg-white"
+                      className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-white"
                     >
                       <option value="analytical">Analytical/Fact-Driven</option>
                       <option value="balanced">Balanced</option>

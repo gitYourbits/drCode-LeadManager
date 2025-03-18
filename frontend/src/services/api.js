@@ -42,7 +42,21 @@ export const LeadAPI = {
     updateLead: (leadId, leadData) => API.put(`/${leadId}`, leadData),
     
     // Delete a lead
-    deleteLead: (leadId) => API.delete(`/${leadId}`)
+    deleteLead: (leadId) => API.delete(`/${leadId}`),
+    
+    // Database management
+    getDatabaseStatus: () => API.get('/database/status'),
+    getDatabaseBackups: () => API.get('/database/backups'),
+    createDatabaseBackup: () => API.post('/database/backup'),
+    restoreDatabaseBackup: (filename) => API.post(`/database/restore/${filename}`),
+    deleteAllLeads: () => API.delete('/all/remove'),
+    deleteAllUsers: () => API.delete('/users/remove'),
+    deleteAllEmployees: () => API.delete('/employees/remove'),
+    
+    // Email campaign management
+    sendEmailCampaign: (campaignData) => API.post('/email/campaign', campaignData),
+    previewEmail: (leadId, emailType) => API.get(`/email/preview/${leadId}${emailType ? `/${emailType}` : ''}`),
+    sendTestEmail: (testData) => API.post('/email/test', testData)
 };
 
 export default API;
